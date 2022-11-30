@@ -1,8 +1,3 @@
-# AoC22
-Advent of Code 2022 solutions
-
-fetch *my* inputs from Powershell:
-```powershell
 # Get "session" cookie from logged in browser at https://adventofcode.com/2022
 #    F12 -> Network (reload page) -> 2022 -> Headers -> Request Headers -> cookie
 
@@ -17,4 +12,3 @@ for ($i=1; $i -le 25; $i++) {
 	  		echo $pth
 	  	} catch {}
 }}
-```
