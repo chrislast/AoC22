@@ -6,6 +6,9 @@ import random
 from PIL import Image
 import numpy as np
 
+# globals
+NS = SimpleNamespace()
+
 TESTS = SimpleNamespace(
     FAILED = 0,
     PASSED = 0,
