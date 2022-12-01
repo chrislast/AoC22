@@ -1,20 +1,13 @@
 # AoC22
-Advent of Code 2022 solutions
+[Advent of Code 2022](https://adventofcode.com/2022) solutions
 
-fetch *my* inputs from Powershell:
-```powershell
-# Get "session" cookie from logged in browser at https://adventofcode.com/2022
-#    F12 -> Network (reload page) -> 2022 -> Headers -> Request Headers -> cookie
+## Diary
 
-$session_cookie="53616c7465645f5fed8855a42edc1ab3adf7e7bf465e1c7f36cd1b0499d72d4d6f3d528b33d8081a8350c447237279bc35da5967f2fa59310e652f2c40a3bbff"
-$wc = New-Object System.Net.WebClient
-$wc.Headers.Add([System.Net.HttpRequestHeader]::Cookie, "session=$session_cookie")
-for ($i=1; $i -le 25; $i++) {
-	$pth = "c:/git/aoc22/input/$i.txt"
-  	if (!(Test-Path $pth)) {
-  		try {
-	  		$wc.DownloadFile("https://adventofcode.com/2022/day/$i/input", $pth)
-	  		echo $pth
-	  	} catch {}
-}}
-```
+Challenge | Execution Time | Visualisation | Notes
+--- | -------------- | ------------- | -----
+Day 1 Calorie Counting [🌐](https://adventofcode.com/2022/day/1)[💾](./day1.py) | 0.0s | [![](./output/day1a.png)](./output/day1a.png)     | Find the elf with most food
+&nbsp; | 0.0s | [![](./output/day1b.png)](./output/day1b.png)  | Find the 3 elves with most food 
+
+## Powershell
+
+This year I am using a [powershell script](./input/download.ps1) to fetch my inputs, and open todays AoC22 puzzle triggered at 05:00:01 every morning (UK time) or as soon as I log in 😃

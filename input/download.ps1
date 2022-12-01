@@ -12,3 +12,8 @@ for ($i=1; $i -le 25; $i++) {
 	  		echo $pth
 	  	} catch {}
 }}
+
+$day = $(Get-Date).day
+start https://adventofcode.com/2022/day/$day
+if (!(Test-Path "c:/git/aoc22/day$day.py")) {
+  cp c:/git/aoc22/dayx.py c:/git/aoc22/day$day.py}
