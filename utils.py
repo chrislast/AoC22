@@ -139,7 +139,7 @@ def day(ospath):
     n = int(Path(ospath).stem[3:])
     return n
 
-def show(*funcs):
+def show(*funcs, compact=False):
     part = 1
     for func in funcs:
         t1 = time.time()
@@ -156,10 +156,12 @@ def show(*funcs):
             pass
         if expect:
             if ret == expect:
-                print(f"\n    Part {part}\n    PASS: {ret}\n    in {elapsed:.3f} seconds")
+                txt = f"\n    Part {part}\n    PASS: {ret}\n    in {elapsed:.3f} seconds"
+                print(txt.replace("\n    "," ") if compact else txt)
                 TESTS.PASSED += 1
             else:
-                print(f"\n    Part {part}\n    FAIL: {ret} expected {expect}\n    in {elapsed:.3f} seconds")
+                txt = f"\n    Part {part}\n    FAIL: {ret} expected {expect}\n    in {elapsed:.3f} seconds"
+                print(txt.replace("\n    "," ") if compact else txt)
                 TESTS.FAILED += 1
         else:
             print(f"\n    Part {part}\n    {ret}\n    in {elapsed:.3f} seconds")

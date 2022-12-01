@@ -1,17 +1,19 @@
-from utils import TESTS
+from utils import TESTS, show
 from pathlib import Path
 import traceback
 import importlib
+import sys
 
-REPORT = """
-###### Totals #######
+REPORT = """###### Test Summary #######
 
-EXECUTED = {}
-PASSED = {}
-FAILED = {}
-ERRORS = {}
-SKIPPED = {}
+EXECUTED = {EXECUTED}
+PASSED = {PASSED}
+FAILED = {FAILED}
+ERRORS = {ERRORS}
+SKIPPED = {SKIPPED}
 """
+
+REPORT2 = "executed:{EXECUTED} passed:{PASSED} failed:{FAILED} errors:{ERRORS}"
 
 def test():
     # import each module and run it's tests
@@ -19,20 +21,16 @@ def test():
         module_name = f"day{n}"
         if (Path(__file__).parent / f"{module_name}.py").is_file():
             try:
-                print(f"\n####### Day {n} #######\n")
+                print(f"####### Day {n} #######")
                 mod = importlib.import_module(module_name)
-                mod.main()
+                show(mod.p1, mod.p2, compact=True)
             except:
                 TESTS.ERRORS += 1
                 traceback.print_exc()
 
     # print test report
-    print(REPORT.format(
-        TESTS.EXECUTED,
-        TESTS.PASSED,
-        TESTS.FAILED,
-        TESTS.ERRORS,
-        TESTS.SKIPPED))
+    print(REPORT2.format(**TESTS.__dict__))
 
 if __name__ == "__main__":
     test()
+    sys.exit(TESTS.FAILED)

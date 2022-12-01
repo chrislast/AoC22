@@ -10,12 +10,12 @@ def viz1a(elves):
     mx = max(elves)
     for idx, elf in enumerate(elves):
         if elf == mx:
-            ax.bar(idx, elf, color="gold")
+            ax.bar(idx, elf, width=1.0, color="gold")
         else:
-            ax.bar(idx, elf, color="silver")
-    ax.set(title="Elf Calories Carried")
+            ax.bar(idx, elf, width=1.0, color="silver")
+    ax.set(title="max(elf)")
     ax.grid(visible=True, axis="y")
-    ax.set_xlim(0,len(elves))
+    ax.set_xlim(0,len(elves)-1)
     fig.set_tight_layout(True)
     fig.savefig(Path(__file__).parent / 'output' / 'day1a.png')
 
@@ -24,12 +24,12 @@ def viz1b(elves):
     fig, ax = plt.subplots()
     elves = sorted(elves)
     for idx, elf in enumerate(elves[:-3]):
-    	ax.bar(idx, elf, color="silver")
+    	ax.bar(idx, elf, width=1.0, color="silver")
     for idx2, elf in enumerate(elves[-3:]):
-        ax.bar(idx+idx2, elf, color="gold")            
-    ax.set(title="Elf Calories Carried")
+        ax.bar(idx+idx2, elf, width=1.0, color="gold")            
+    ax.set(title="sorted(elves)[-3:]")
     ax.grid(visible=True, axis="y")
-    ax.set_xlim(0,len(elves))
+    ax.set_xlim(0,len(elves)-1)
     fig.set_tight_layout(True)
     fig.savefig(Path(__file__).parent / 'output' / 'day1b.png')
 
