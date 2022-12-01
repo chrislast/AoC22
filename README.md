@@ -6,7 +6,7 @@
 Challenge | Execution Time | Visualisation | Notes
 --------- | -------------- | ------------- | -----
 Day 1 Calorie Counting [🌐](https://adventofcode.com/2022/day/1)[💾](./day1.py) | 0.0s | [![](./output/day1a.png)](./output/day1a.png)     | Find the elf with the most calorific food
-&nbsp; | 0.0s | [![](./output/day1b.png)](./output/day1b.png)  | Find the 3 elves with the most calorific food 
+&nbsp; | 0.0s | [![](./output/day1b.png)](./output/day1b.png)  | Find the 3 elves with the most calorific food<br /><br />**04:49** elapsed time was good enough for rank **#1191** a mere 1091 ranks outside the points leaderboard so I'll sleep in tomorrow!
 
 ## Powershell
 

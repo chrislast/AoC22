@@ -16,6 +16,8 @@ def viz1a(elves):
     ax.set(title="max(elf)")
     ax.grid(visible=True, axis="y")
     ax.set_xlim(0,len(elves)-1)
+    ax.set_xlabel("elf")
+    ax.set_ylabel("total calories")
     fig.set_tight_layout(True)
     fig.savefig(Path(__file__).parent / 'output' / 'day1a.png')
 
@@ -30,6 +32,8 @@ def viz1b(elves):
     ax.set(title="sorted(elves)[-3:]")
     ax.grid(visible=True, axis="y")
     ax.set_xlim(0,len(elves)-1)
+    ax.set_xlabel("elf")
+    ax.set_ylabel("total calories")
     fig.set_tight_layout(True)
     fig.savefig(Path(__file__).parent / 'output' / 'day1b.png')
 
