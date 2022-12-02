@@ -7,6 +7,7 @@ from types import SimpleNamespace
 
 # load todays input data as a docstring
 TEXT = load(day(__file__))
+# convenient for passing working between parts 1 and 2, and relevant stuff to vizualations 
 NS = SimpleNamespace()
 
 # parse the input
@@ -26,5 +27,5 @@ def p2(expect=0):
 
 if __name__ == "__main__":
     show(p1, p2)
-    #viz.viz?a(NS.?)
-    #viz.viz?b(NS.?)
+    #viz.viz?p1(NS)
+    #viz.viz?p2(NS)

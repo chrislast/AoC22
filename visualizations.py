@@ -1,10 +1,10 @@
 from utils import load, show, day, TRACE, Map, Path, NS
-from PIL import Image
+from PIL import Image, ImageDraw, ImageFont
 from matplotlib import pyplot as plt
 import numpy as np
 from collections import Counter
 
-def viz1a(elves):
+def viz1p1(elves):
     """bar graph"""
     fig, ax = plt.subplots()
     mx = max(elves)
@@ -21,7 +21,7 @@ def viz1a(elves):
     fig.set_tight_layout(True)
     fig.savefig(Path(__file__).parent / 'output' / 'day1a.png')
 
-def viz1b(elves):
+def viz1p2(elves):
     """bar graph"""
     fig, ax = plt.subplots()
     elves = sorted(elves)
@@ -36,6 +36,50 @@ def viz1b(elves):
     ax.set_ylabel("total calories")
     fig.set_tight_layout(True)
     fig.savefig(Path(__file__).parent / 'output' / 'day1b.png')
+
+
+class RockPaperScissorsGIF:
+    def __init__(self):
+        self.gif = []
+        self.round = 0
+        self.font = ImageFont.load_default()
+        rps = Image.open("resources/rps.png").resize((120,100)).convert("RGB")
+        self.rps = {
+            "R": rps.crop((60,10,120,60)).transpose(Image.Transpose.FLIP_LEFT_RIGHT),
+            "P": rps.crop((20,50,80,100)),
+            "S": rps.crop((0,0,60,50)),
+        }
+
+    def play(self, game):
+        for rnd, tot in game:
+                self.play_round(*rnd.split(), tot)
+
+    def play_round(self, rps1, rps2, score):
+        self.round += 1
+        img = Image.new("RGB", (120,80)) # width, height
+        #img.putpalette(palette)
+        # show round
+        d = ImageDraw.Draw(img)
+        d.text((5,5), f"[{self.round:4d}] score:{score:5d}", fill=(255,255,255), font=self.font)
+        # show player 1
+        img.paste(self.rps[rps1], (0,30))
+        # show player 2
+        img.paste(self.rps[rps2].transpose(Image.Transpose.FLIP_LEFT_RIGHT),(60,30))
+        # show score
+        self.gif.append(img)
+
+    def write(self, fname):
+        self.gif[0].save(fname, append_images=self.gif[1:], save_all=True) #, palette=self.palette)
+
+def viz2p1(game):
+    rps = RockPaperScissorsGIF()
+    rps.play(game)
+    rps.write("output/day2a.gif")
+
+def viz2p2(game):
+    rps = RockPaperScissorsGIF()
+    rps.play(game)
+    rps.write("output/day2b.gif")
 
 # def viz1(depths):
 #     # visualize the depth map

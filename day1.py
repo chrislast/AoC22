@@ -29,5 +29,5 @@ def p2(answer=200116):
 
 if __name__ == "__main__":
     show(p1, p2)
-    viz.viz1a(NS.elves)
-    viz.viz1b(NS.elves)
+    viz.viz1p1(NS.elves)
+    viz.viz1p2(NS.elves)

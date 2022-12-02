@@ -10,37 +10,47 @@ TEXT = load(day(__file__))
 NS = SimpleNamespace()
 
 # parse the input
-NS.DATA = [tuple(_.split()) for _ in TEXT.splitlines()]
+DATA = [_ for _ in TEXT.splitlines()]
+
+R,P,S = 1,2,3 # rock paper scissors
+W,D,L = 6,3,0 # win draw lose
+SCORE = {'R R':D+R, 'R P':W+P, 'R S':L+S,
+         'P R':L+R, 'P P':D+P, 'P S':W+S,
+         'S R':W+R, 'S P':L+P, 'S S':D+S}
+
+def play(rules):
+    total = 0
+    animate = []
+    for _ in DATA:
+        rnd = rules[_]
+        total += SCORE[rnd]
+        animate.append((rnd, total))
+    return total, animate
 
 ######## Part 1 ##########
 def p1(expect=10994):
-    tot = 0
-    # lose=0, draw=3, win=6
-    # choice: A/X/rock=1, B/Y/paper=2, C/Z/scissors=3
-    NS.score1 = {
-        ('A','X'):3+1, ('A','Y'):6+2, ('A','Z'):0+3,
-        ('B','X'):0+1, ('B','Y'):3+2, ('B','Z'):6+3,
-        ('C','X'):6+1, ('C','Y'):0+2, ('C','Z'):3+3}
-    for _ in NS.DATA:
-        tot += NS.score1[_]
+    # A B C = rock paper scissors
+    # X Y Z = rock paper scissors
+    rules = {
+        ('A X'):"R R", ('A Y'):"R P", ('A Z'):"R S",
+        ('B X'):"P R", ('B Y'):"P P", ('B Z'):"P S",
+        ('C X'):"S R", ('C Y'):"S P", ('C Z'):"S S"}
+    tot, NS.p1 = play(rules)
     return tot
 
 ######## Part 2 ##########
 def p2(expect=12526):
-    tot = 0
-    # outcome: X/lose=0, Y/draw=3, Z/win=6
-    # rock=1, paper=2, scissors=3
-    NS.score2 = {
-        ('A','X'):3+0, ('A','Y'):1+3, ('A','Z'):2+6,
-        ('B','X'):1+0, ('B','Y'):2+3, ('B','Z'):3+6,
-        ('C','X'):2+0, ('C','Y'):3+3, ('C','Z'):1+6}
-    for _ in NS.DATA:
-        tot += NS.score2[_]
+    # A B C = rock paper scissors
+    # X Y Z = lose draw win
+    rules = {
+        ('A X'):"R S", ('A Y'):"R R", ('A Z'):"R P",
+        ('B X'):"P R", ('B Y'):"P P", ('B Z'):"P S",
+        ('C X'):"S P", ('C Y'):"S S", ('C Z'):"S R"}
+    tot, NS.p2 = play(rules)
     return tot
-
 
 if __name__ == "__main__":
     show(p1, p2)
     # play rock paper scissor gif with accumulating score...
-    #viz.viz2p1(NS)
-    #viz.viz2p2(NS)
+    viz.viz2p1(NS.p1)
+    viz.viz2p2(NS.p2)
