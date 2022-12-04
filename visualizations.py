@@ -91,14 +91,20 @@ def viz2p2(game):
 #     viz.add_a_submarine(15,5)
 #     viz.img.save(Path(__file__).parent / 'output' / 'day1.png')
 
-# def viz2b(tracker):
-#     # visualize the depth map
-#     viz = Map([" "*100]*100)
-#     viz.setcolour("#",(255,255,0))
-#     for pos in tracker:
-#         viz.set(pos, '#')
-#     viz.add_a_submarine(99,99)
-#     viz.img.save(Path(__file__).parent / 'output' / 'day2b.png')
+def viz4p1(elfduties):
+    # visualize the depth map
+    viz = Map(["0"*100]*len(elfduties))
+    viz.setcolour("0",(0,0,0))
+    viz.setcolour("1",(255,0,0))
+    viz.setcolour("2",(0,0,255))
+    viz.setcolour("3",(255,0,255))
+    for y, elves in enumerate(elfduties):
+        e1, e2 = elves
+        for x in e1:
+            viz.set((x,y),"1")
+        for x in e2:
+            viz.set((x,y),viz.get((x,y))+2)
+    viz.img.save(Path(__file__).parent / 'output' / 'day4a.png')
 
 # def viz3a(counters):
 #     """stacked bar graph"""

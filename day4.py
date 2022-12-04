@@ -30,8 +30,10 @@ def elfduties(line):
 ######## Part 1 ##########
 def p1(expect=571):
     tot = 0
+    NS.p1 = []
     for line in TEXT.splitlines():
         elf1, elf2 = elfduties(line)
+        NS.p1.append([elf1, elf2])
         if len(elf2-elf1) == 0 or len(elf1-elf2) == 0:
             tot += 1
     return tot
@@ -47,5 +49,5 @@ def p2(expect=917):
 
 if __name__ == "__main__":
     show(p1, p2)
-    #viz.viz?p1(NS)
+    viz.viz4p1(NS.p1)
     #viz.viz?p2(NS)

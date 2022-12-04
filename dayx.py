@@ -1,7 +1,8 @@
 # import our helpers
+import sys
+from types import SimpleNamespace
 from utils import load, show, day, TRACE, Map, Path
 import visualizations as viz
-from types import SimpleNamespace
 
 ####### GLOBALS #########
 
@@ -10,11 +11,15 @@ TEXT = load(day(__file__))
 # convenient for passing working between parts 1 and 2, and relevant stuff to vizualations 
 NS = SimpleNamespace()
 
+if len(sys.argv) > 1:
+ TEXT = """
+""".splitlines()
+
 # parse the input
 try:
     DATA = [int(txt) for txt in TEXT.splitlines()]
 except:
-    pass
+    DATA = Map(TEXT)
 
 ######## Part 1 ##########
 def p1(expect=0):

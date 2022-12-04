@@ -19,7 +19,9 @@ for ($i=1; $i -le 25; $i++) {
 
 # open todays problem in a web browser
 start https://adventofcode.com/2022/day/$day
+start https://adventofcode.com/2022/day/$day/input
 
 # create solution from template if it doesn't exist yet
 if (!(Test-Path "c:/git/aoc22/day$day.py")) {
   cp c:/git/aoc22/dayx.py c:/git/aoc22/day$day.py}
+start c:/git/aoc22/day$day.py
