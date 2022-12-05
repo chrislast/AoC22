@@ -106,7 +106,7 @@ def viz4p1(elfduties):
             viz.set((x,y),viz.get((x,y))+2)
     i2 = viz.img.resize((100,100))
     i2.save(Path(__file__).parent / 'output' / 'day4ax.png')
-    viz.img.save(Path(__file__).parent / 'output' / 'day4a.png')
+    viz.img.resize((100,len(elfduties)*4)).save(Path(__file__).parent / 'output' / 'day4a.png')
 
 # def viz3a(counters):
 #     """stacked bar graph"""
