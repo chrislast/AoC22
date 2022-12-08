@@ -104,9 +104,25 @@ def viz4p1(elfduties):
             viz.set((x,y),"1")
         for x in e2:
             viz.set((x,y),viz.get((x,y))+2)
-    i2 = viz.img.resize((100,100))
+    i2 = viz.img.resize((200,200))
     i2.save(Path(__file__).parent / 'output' / 'day4ax.png')
     viz.img.resize((100,len(elfduties)*4)).save(Path(__file__).parent / 'output' / 'day4a.png')
+
+
+def viz8p2(ns, m):
+    w,h = m.img.size
+    for _ in "0123456789":
+        m.setcolour(_,(20,50+15*int(_),20))
+    m.set(ns.treehouse,1)
+    m.img.resize((w*4,h*4)).save("output/day8b.png")
+
+def viz8p1(ns, m):
+    w,h = m.img.size
+    for x in range(w):
+        for y in range(h):
+            if (x,y) not in ns.visible:
+                m.set((x,y),0)
+    m.img.resize((w*4,h*4)).save("output/day8a.png")
 
 # def viz3a(counters):
 #     """stacked bar graph"""

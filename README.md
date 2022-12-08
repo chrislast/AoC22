@@ -4,23 +4,23 @@
 ## Diary
 
 |&nbsp;|Challenge | Execution Time | Visualisation | Notes
-|-|--------- | -------------- | ------------- | -----
+|------|--------- | -------------- | ------------- | -----
 |1a|Calorie Counting [🌐](https://adventofcode.com/2022/day/1)[💾](./day1.py) | 0ms | [![](./output/day1a.png)](./output/day1a.png) | Find the elf with the most calorific food
-|1b|&nbsp;                                                                              | 0ms | [![](./output/day1b.png)](./output/day1b.png)  | Find the 3 elves with the most calorific food<br /><br />**04:49** elapsed time was good enough for rank **#1191** a mere 1091 ranks outside the points leaderboard so I'll sleep in tomorrow!
-|2a|Rock Paper Scissors [🌐](https://adventofcode.com/2022/day/2)[💾](./day2.py) | 1ms | [![](./output/day2a.gif)](./output/day2a.gif) | XYZ = rock paper scissors
-|2b|&nbsp;                                                                              | 1ms | [![](./output/day2b.gif)](./output/day2b.gif)  | XYZ = lose draw win
+|1b|&nbsp; | 0ms | [![](./output/day1b.png)](./output/day1b.png)  | Find the 3 elves with the most calorific food<br /><br />**04:49** elapsed time was good enough for rank **#1191** a mere 1091 ranks outside the points leaderboard so I'll sleep in tomorrow!
+|2a|Rock Paper Scissors [🌐](https://adventofcode.com/2022/day/2)[💾](./day2.py) | 1ms | [![](./output/day2a.gif)](./output/day2a.gif) play! | XYZ = rock paper scissors
+|2b|&nbsp; | 1ms | [![](./output/day2b.gif)](./output/day2b.gif)  play!| XYZ = lose draw win
 |3a|Rucksack Reorganization [🌐](https://adventofcode.com/2022/day/3)[💾](./day3.py) | 0ms | [![](./output/day3a.png)](./output/day3a.png) | find the set intersection
-|3b|&nbsp;                                                                              |1ms | [![](./output/day3b.png)](./output/day3b.png)  | intersections pt 2
-|4a|Camp Cleanup [🌐](https://adventofcode.com/2022/day/4)[💾](./day4.py) | 3ms | [![](./output/day4ax.png)](./output/day4a.png) | find the subsets
-|4b|&nbsp;                                                                              | 3ms | [![](./output/day4b.png)](./output/day4b.png)  | and back to intersections
-|5a|Supply Stacks [🌐](https://adventofcode.com/2022/day/5)[💾](./day5.py) | <!-- 0.0s --> | [![](./output/day5a.png)](./output/day5a.png) | text parsing and string manipulation
-|5b|&nbsp;                                                                              | <!-- 0.0s --> | [![](./output/day5b.png)](./output/day5b.png)  | 
-|6a|[🌐](https://adventofcode.com/2022/day/6)[💾](./day6.py) | <!-- 0.0s --> | [![](./output/day6a.png)](./output/day6a.png) | 
-|6b|&nbsp;                                                                              | <!-- 0.0s --> | [![](./output/day6b.png)](./output/day6b.png)  | 
-|7a|[🌐](https://adventofcode.com/2022/day/7)[💾](./day7.py) | <!-- 0.0s --> | [![](./output/day7a.png)](./output/day7a.png) | 
-|7b|&nbsp;                                                                              | <!-- 0.0s --> | [![](./output/day7b.png)](./output/day7b.png)  | 
-|8a|[🌐](https://adventofcode.com/2022/day/8)[💾](./day8.py) | <!-- 0.0s --> | [![](./output/day8a.png)](./output/day8a.png) | 
-|8b|&nbsp;                                                                              | <!-- 0.0s --> | [![](./output/day8b.png)](./output/day8b.png)  | 
+|3b|&nbsp; |1ms | [![](./output/day3b.png)](./output/day3b.png)  | intersections pt 2
+|4a|Camp Cleanup [🌐](https://adventofcode.com/2022/day/4)[💾](./day4.py) | 3ms | [![](./output/day4ax.png)](./output/day4a.png) </br />elf 1 is red</br />elf 2 is cyan</br />overlaps are white | find the subsets
+|4b|&nbsp; | 3ms | [![](./output/day4b.png)](./output/day4b.png)  | and back to intersections
+|5a|Supply Stacks [🌐](https://adventofcode.com/2022/day/5)[💾](./day5.py) | 0ms | [![](./output/day5a.png)](./output/day5a.png) | text parsing multiple info sources and array manipulation
+|5b|&nbsp; | 0ms | [![](./output/day5b.png)](./output/day5b.png)  | tiny change to element ordering
+|6a|Tuning Trouble [🌐](https://adventofcode.com/2022/day/6)[💾](./day6.py) | 0ms | [![](./output/day6a.png)](./output/day6a.png) | Walk a long string for first occurrence of n unique characters where n=4
+|6b|&nbsp; | 1ms | [![](./output/day6b.png)](./output/day6b.png)  | where n=14
+|7a|No Space Left On Device [🌐](https://adventofcode.com/2022/day/7)[💾](./day7.py) | 0ms | [![](./output/day7a.png)](./output/day7a.png) | Track folder sizes in a Linux-like file system
+|7b|&nbsp; | 0ms | [![](./output/day7b.png)](./output/day7b.png)  | Delete the right one to start the upgrade.  Will we see more of this Linux virtual computer later?
+|8a|Treetop Tree House [🌐](https://adventofcode.com/2022/day/8)[💾](./day8.py) | 17ms | [![](./output/day8a.png)](./output/day8a.png) visible trees | find the local maximum from edges of a 2D array
+|8b|&nbsp; | 59ms | [![](./output/day8b.png)](./output/day8b.png) tree house (white) | find the local maximums from each point in a 2D array - O(N2) alert!
 |9a|[🌐](https://adventofcode.com/2022/day/9)[💾](./day9.py) | <!-- 0.0s --> | [![](./output/day9a.png)](./output/day9a.png) | 
 |9b|&nbsp;                                                                              | <!-- 0.0s --> | [![](./output/day9b.png)](./output/day9b.png)  | 
 |10a|[🌐](https://adventofcode.com/2022/day/10)[💾](./day10.py) | <!-- 0.0s --> | [![](./output/day10a.png)](./output/day10a.png) | 

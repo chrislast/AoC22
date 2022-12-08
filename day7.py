@@ -40,18 +40,18 @@ $ ls
 
 LOOKUP = {}
 
-def sz(dct, name, curpth):
+def rsize(dct, pth):
     """
     recursively walk the root directory caching directory sizes
     """
-    newpth = "/".join([curpth,name])
-    LOOKUP[newpth] = 0
+    LOOKUP[pth] = 0
     for k,v in dct.items():
-        if isinstance(v,dict):
-            sz(v,k,newpth)
-            LOOKUP[newpth] += LOOKUP['/'.join([newpth,k])]
+        kpth = "/".join([pth, k])
+        if isinstance(v, dict):
+            rsize(v, kpth)
+            LOOKUP[pth] += LOOKUP[kpth]
         else:
-            LOOKUP[newpth] += v
+            LOOKUP[pth] += v
 
 ######## Part 1 ##########
 def p1(expect=1611443):
@@ -83,7 +83,7 @@ def p1(expect=1611443):
             cwd[_[1]]=int(_[0])
 
     # recursively walk the root directory caching directory sizes
-    sz(root,"root", "")
+    rsize(root,"")
 
     dirsizes = [v for k,v in LOOKUP.items()if v <= 100000]
     return sum(dirsizes)
@@ -92,7 +92,7 @@ def p1(expect=1611443):
 def p2(expect=2086088):
     capacity = 70_000_000
     needed = 30_000_000
-    used = LOOKUP["/root"]
+    used = LOOKUP[""]
     free = capacity - used
     need_to_delete = needed - free
     dirsizes = [v for k,v in LOOKUP.items()]

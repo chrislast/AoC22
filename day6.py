@@ -26,7 +26,7 @@ def p1(expect=1140):
 ######## Part 2 ##########
 def p2(expect=3495):
     sz=14
-    for _ in range(len(TXT)):
+    for i in range(len(TXT)):
         if len(set(TXT[i:i+sz])) == sz:
             return i+sz
 
