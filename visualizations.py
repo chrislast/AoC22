@@ -124,6 +124,48 @@ def viz8p1(ns, m):
                 m.set((x,y),0)
     m.img.resize((w*4,h*4)).save("output/day8a.png")
 
+def viz9(fname, ropes):
+    BLACK = 0
+    START = 1
+    KNOT = 2
+    TAIL = 3
+    PALETTE = (0,0,0,  0,0,255,  128,128,128,  200,0,0)
+
+    xmin = ymin = xmax = ymax = 0
+    # find the corners
+    for rope in ropes:
+        for x,y in rope:
+            xmin = min(x, xmin)
+            ymin = min(y, ymin)
+            xmax = max(x, xmax)
+            ymax = max(y, ymax)
+
+    xmin -= 1; ymin -= 1; xmax += 1; ymax += 1
+    dx = -xmin; dy = -ymin
+
+    h=ymax-ymin+1
+    w=xmax-xmin+1
+
+    gif = []
+    been = set()
+    for rope in ropes:
+        img = Image.new("P", (w,h))
+        img.putpalette(PALETTE)
+        gif.append(img)
+        for x,y in been:
+            img.putpixel((x+dx, y+dy), TAIL)
+        img.putpixel((0+dx, 0+dy), START)
+        for x,y in rope:
+            img.putpixel((x+dx, y+dy), KNOT)
+        been.add((x, y))
+    img.save(fname, append_images=gif, save_all=True)
+
+def viz9p1(ropes):
+    viz9("output/day9a.gif", ropes)
+
+def viz9p2(ropes):
+    viz9("output/day9b.gif", ropes)
+
 # def viz3a(counters):
 #     """stacked bar graph"""
 #     fig, ax = plt.subplots()
