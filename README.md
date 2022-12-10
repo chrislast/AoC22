@@ -21,10 +21,10 @@
 |7b|&nbsp; | 0ms | [![](./output/day7b.png)](./output/day7b.png)  | Delete the right one to start the upgrade.  Will we see more of this Linux virtual computer later?
 |8a|Treetop Tree House [🌐](https://adventofcode.com/2022/day/8)[💾](./day8.py) | 17ms | [![](./output/day8a.png)](./output/day8a.png) visible trees | find the local maximum from edges of a 2D array
 |8b|&nbsp; | 59ms | [![](./output/day8b.png)](./output/day8b.png) tree house (white) | find the local maximums from each point in a 2D array - O(N2) alert!
-|9a|[🌐](https://adventofcode.com/2022/day/9)[💾](./day9.py) | 7ms | [![](./output/day9a.gif)](./output/day9a.gif) | overslept :( then massively overcomplicated the rope tail updater by using compound if-then-elses; replaced my original 2-knot head tail solution with generic version from part 2 with length 2
-|9b|&nbsp; | 32ms | [![](./output/day9b.gif)](./output/day9b.gif)  | stuck for ages debugging complicated tail updater; evetually replaced that with much simpler version and it worked then simplified everything else to end up looking quite pleasing, good for animation too!
-|10a|[🌐](https://adventofcode.com/2022/day/10)[💾](./day10.py) | <!-- 0.0s --> | [![](./output/day10a.png)](./output/day10a.png) | 
-|10b|&nbsp;                                                                                 | <!-- 0.0s --> | [![](./output/day10b.png)](./output/day10b.png)  | 
+|9a|Rope Bridge [🌐](https://adventofcode.com/2022/day/9)[💾](./day9.py) | 7ms | [![](./output/day9a.gif)](./output/day9a.gif) | overslept :( then massively overcomplicated the rope tail updater by using compound if-then-elses; replaced my original 2-knot head tail solution with generic version from part 2 with length 2
+|9b|&nbsp; | 32ms | [![](./output/day9b.gif)](./output/day9b.gif)  | stuck for ages debugging complicated tail updater; eventually replaced that with much simpler version and it worked then simplified everything else to end up looking quite pleasing, good for animation too!
+|10a|Cathode-Ray Tube [🌐](https://adventofcode.com/2022/day/10)[💾](./day10.py) | 0ms | [![](./output/day10a.png)](./output/day10a.png) | a comprehension test in two parts with asuitably satisfying end
+|10b|&nbsp;| 0ms | [![](./output/day10b.png)](./output/day10b.png)  | hmm my code is all #s... a useful reminder that [["."]\*40]\*6 gives you 6 references to the same array!
 |11a|[🌐](https://adventofcode.com/2022/day/11)[💾](./day11.py) | <!-- 0.0s --> | [![](./output/day11a.png)](./output/day11a.png) | 
 |11b|&nbsp;                                                                                 | <!-- 0.0s --> | [![](./output/day11b.png)](./output/day11b.png)  | 
 |12a|[🌐](https://adventofcode.com/2022/day/12)[💾](./day12.py) | <!-- 0.0s --> | [![](./output/day12a.png)](./output/day12a.png) | 

@@ -77,6 +77,14 @@ class Map:
             self.output_size = (x,y)
         return self.img.copy().resize(self.output_size)
 
+    def resize(self, scale_or_shape):
+        x,y = self.img.size
+        if isinstance(scale_or_shape, (int, float)):
+            newx = int(x*scale_or_shape)
+            newy = int(y*scale_or_shape)
+            scale_or_shape = (newx,newy)
+        return self.img.resize(scale_or_shape)
+
     def show(self):
         """show the PIL image"""
         self.resized().show()
@@ -182,13 +190,19 @@ CODE2ALPHA = {ALPHA2CODE[_]:_ for _ in ALPHA2CODE}
 # assign a unique bit to each part of 4x6 font
 ARRAY2CODE = np.array([1<<i for i in range(23,-1,-1)], dtype=int).reshape((6,4))
 
-def decode4x6font(dots):
+def decode4x6font(xypos):
+    """
+    Take a list of (x,y) coordinates and decode them to letters
+    in Advent of Codes 6x4 font
+
+    return the string matching the letters
+    """
     txt = ""
-    xl=[x for x,y in dots]
-    yl=[y for x,y in dots]
+    xl=[x for x,y in xypos]
+    yl=[y for x,y in xypos]
     arr=np.zeros((max(yl)-min(yl)+1,max(xl)-min(xl)+1), dtype=int)
-    for dot in dots:
-        arr[dot[::-1]] = 1
+    for pos in xypos:
+        arr[pos[::-1]] = 1
     # align text to top right of array
     line = arr[min(yl):,min(xl):]
     # extract characters until the line is empty
