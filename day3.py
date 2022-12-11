@@ -2,7 +2,6 @@
 from utils import load, show, day, TRACE, Map, Path
 import visualizations as viz
 from types import SimpleNamespace
-import sys
 
 ####### GLOBALS #########
 
@@ -10,15 +9,6 @@ import sys
 TEXT = load(day(__file__)).splitlines()
 # convenient for passing working between parts 1 and 2, and relevant stuff to vizualations 
 NS = SimpleNamespace()
-
-if len(sys.argv) > 1:
- TEXT = """vJrwpWtwJgWrhcsFMMfFFhFp
-jqHRNqRjqzjGDLGLrsFMfFZSrLrFZsSL
-PmmdzqPrVvPwwTWBwg
-wMqvLMZHhHMvwLHjbvcjnnSBnvTQFn
-ttgJtRGJQctTZtZT
-CrZsJsPPZsGzwwsLwLmpwMDw
-""".splitlines()
 
 def pri(c):
     if "A" <= c <= "Z":

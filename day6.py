@@ -1,5 +1,4 @@
 # import our helpers
-import sys
 from types import SimpleNamespace
 from utils import load, show, day, TRACE, Map, Path
 import visualizations as viz
@@ -10,11 +9,6 @@ import visualizations as viz
 TXT = load(day(__file__))
 # convenient for passing working between parts 1 and 2, and relevant stuff to vizualations 
 NS = SimpleNamespace(p1=[],p2=[])
-
-if len(sys.argv) > 1:
-    # Use test data instead
-    TXT = "bvwbjplbgvbhsrlpgdmjqwftvncz"
-
 
 ######## Part 1 ##########
 def p1(expect=1140):

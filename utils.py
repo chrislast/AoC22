@@ -1,3 +1,4 @@
+import sys
 from pathlib import Path
 import pdb
 import time
@@ -138,7 +139,10 @@ ALPHA = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 TRACE=pdb.set_trace
 
 def load(n):
-    f = Path(__file__).parent / "input" / f"{n}.txt"
+    if len(sys.argv) == 1:
+        f = Path(__file__).parent / "input" / f"{n}.txt"
+    else:
+        f = Path(__file__).parent / "example" / f"example{n}.txt"
     if f.is_file():
         return f.read_text()
     return ''

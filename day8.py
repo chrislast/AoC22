@@ -1,5 +1,4 @@
 # import our helpers
-import sys
 from types import SimpleNamespace
 from utils import load, show, day, TRACE, Map, Path
 import visualizations as viz
@@ -10,15 +9,6 @@ import visualizations as viz
 TEXT = load(day(__file__)).splitlines()
 # convenient for passing working between parts 1 and 2, and relevant stuff to vizualations 
 NS = SimpleNamespace()
-
-if len(sys.argv) > 1:
- TEXT = """
-30373
-25512
-65332
-33549
-35390
-""".splitlines()[1:]
 
 MAP=Map(TEXT)
 W,H = MAP.img.size

@@ -7,19 +7,20 @@ import visualizations as viz
 ####### GLOBALS #########
 
 # load todays input data as a docstring
-TEXT = load(day(__file__))
+TEXT = load(day(__file__)).splitlines()
 # convenient for passing working between parts 1 and 2, and relevant stuff to vizualations 
 NS = SimpleNamespace()
 
 if len(sys.argv) > 1:
  TEXT = """
-""".splitlines()
+""".splitlines()[1:]
 
 # parse the input
-try:
-    DATA = [int(txt) for txt in TEXT.splitlines()]
-except:
-    DATA = Map(TEXT)
+def parse(line):
+    a,b,*c = line.split()
+    return a, int(b), c
+
+PARSED = [parse(_) for _ in TEXT]
 
 ######## Part 1 ##########
 def p1(expect=0):

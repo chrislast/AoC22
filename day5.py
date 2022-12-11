@@ -1,5 +1,4 @@
 # import our helpers
-import sys
 from types import SimpleNamespace
 from utils import load, show, day, TRACE, Map, Path
 import visualizations as viz
@@ -8,24 +7,9 @@ import visualizations as viz
 
 # load todays input data as a docstring
 TXT = load(day(__file__)).splitlines()
-NDOCKS = 9
+NDOCKS = 9 if "1   2   3   4   5   6   7   8   9" in TXT else 3
 # convenient for passing working between parts 1 and 2, and relevant stuff to vizualations 
 NS = SimpleNamespace(p1=[],p2=[])
-
-if len(sys.argv) > 1:
-    # Use test data instead
-    NDOCKS = 3
-    TXT = """
-    [D]     
-[N] [C]     
-[Z] [M] [P]  
- 1   2   3  
-
-move 1 from 2 to 1
-move 3 from 1 to 3
-move 2 from 2 to 1
-move 1 from 1 to 2
-""".splitlines()[1:]
 
 # parse initial dock setup
 DOCKS = [""]*NDOCKS

@@ -1,5 +1,4 @@
 # import our helpers
-import sys
 from types import SimpleNamespace
 from utils import load, show, day, TRACE, Map, Path
 import visualizations as viz
@@ -10,33 +9,6 @@ from collections import deque
 TEXT = load(day(__file__)).splitlines()
 # convenient for passing working between parts 1 and 2, and relevant stuff to vizualations 
 NS = SimpleNamespace()
-
-if len(sys.argv) > 1:
- TEXT = """
-$ cd /
-$ ls
-dir a
-14848514 b.txt
-8504156 c.dat
-dir d
-$ cd a
-$ ls
-dir e
-29116 f
-2557 g
-62596 h.lst
-$ cd e
-$ ls
-584 i
-$ cd ..
-$ cd ..
-$ cd d
-$ ls
-4060174 j
-8033020 d.log
-5626152 d.ext
-7214296 k
-""".splitlines()[1:]
 
 LOOKUP = {}
 

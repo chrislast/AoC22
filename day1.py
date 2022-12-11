@@ -13,14 +13,12 @@ NS = SimpleNamespace()
 ######## Part 1 ##########
 def p1(answer=67016):
     """elf with most food"""
-    NS.elves = []
-    elf_calories = 0
+    NS.elves = [0]
     for calories in TEXT.splitlines():
         if calories:
-            elf_calories += int(calories)
+            NS.elves[-1] += int(calories)
         else:
-            NS.elves.append(elf_calories)
-            elf_calories = 0
+            NS.elves.append(0)
     return max(NS.elves)
 
 ######## Part 2 ##########
