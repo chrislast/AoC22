@@ -7,7 +7,7 @@ import visualizations as viz
 
 # load todays input data as a docstring
 TXT = load(day(__file__)).splitlines()
-NDOCKS = 9 if "1   2   3   4   5   6   7   8   9" in TXT else 3
+NDOCKS = 9 if len(TXT)>20 else 3
 # convenient for passing working between parts 1 and 2, and relevant stuff to vizualations 
 NS = SimpleNamespace(p1=[],p2=[])
 

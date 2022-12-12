@@ -29,7 +29,7 @@ class Monkey:
         self.iffalse = int(txt[5][30:])
         self.inspects = 0
 
-    def take_turn(self):
+    def monkey_around(self):
         while self.items:
             self.inspects += 1 # count inspections for solution
             item = self.items.popleft() 
@@ -60,9 +60,9 @@ class Monkey:
 def monkey_business_after_playing_rounds(rounds):
     for _ in range(rounds):
         for monkey in Monkey.monkeys:
-            monkey.take_turn()
-    i = sorted([m.inspects for m in Monkey.monkeys])
-    return i[-1] * i[-2]
+            monkey.monkey_around()
+    monkey_business = math.prod(sorted([m.inspects for m in Monkey.monkeys])[-2:])
+    return monkey_business
 
 def p1(expect=69918):
     Monkey.monkeys = [Monkey(monkey_info) for monkey_info in INPUT_GROUPS]

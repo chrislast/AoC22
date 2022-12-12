@@ -68,10 +68,10 @@ def p2(expect=500):
                     new_route=pos.route.copy()
                     new_route.append(new_xy)
                     BFS.append(NODE(new_x, new_y, new_z, pos.steps+1, new_route))
-    NS.p2 = pos.route[::-1]
+    NS.p2 = pos.route
     return pos.steps
 
 if __name__ == "__main__":
     show(p1, p2)
-    #viz.viz?p1(NS)
-    #viz.viz?p2(NS)
+    viz.viz12p1(NS)
+    viz.viz12p2(NS)

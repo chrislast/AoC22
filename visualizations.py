@@ -166,6 +166,43 @@ def viz9p1(ropes):
 def viz9p2(ropes):
     viz9("output/day9b.gif", ropes)
 
+
+def viz12p1(ns):
+    # update map palette
+    for _ in "abcdefghijklmnopqrstuvwxyz":
+        o = ord(_) - ord("a")
+        ns.map.setcolour(_,(o*10, 128+o*5, o*10))
+    ns.map.setcolour("S", (255,0,0))
+    ns.map.setcolour("P", (255,0,255))
+    ns.map.setcolour("E", (0,0,255))
+
+    pth = ns.p1
+    img = ns.map.img.copy()
+    img.putpixel(pth[0], ord("S"))
+    img.putpixel(pth[-1], ord("E"))
+    w,h = img.size
+    img = img.resize((w*3, h*3))
+    for _ in pth:
+        x,y=_
+        img.putpixel((x*3+1, y*3+1), ord("P"))
+    img.resize((w*9, h*9)).save("output/day12a.png")
+
+def viz12p2(ns):
+    pth = ns.p2
+    # all elevation a are target in part 2
+    ns.map.setcolour("a", (0,0,255))
+    img = ns.map.img.copy()
+    img.putpixel(pth[0], ord("S"))
+    w,h = img.size
+    img = img.resize((w*3, h*3))
+    for _ in pth:
+        x,y=_
+        img.putpixel((x*3+1, y*3+1), ord("P"))
+    img.resize((w*9, h*9)).save("output/day12b.png")
+
+
+
+
 # def viz3a(counters):
 #     """stacked bar graph"""
 #     fig, ax = plt.subplots()
