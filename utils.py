@@ -221,3 +221,13 @@ def decode4x6font(xypos):
         # cut the decoded character out of the array
         line = line[:,5:]
     return txt
+
+def flatten(l):
+    a = []
+    for _ in l:
+        if isinstance(_,int):
+            a.append(_)
+        else:
+            a += flatten(_)
+    return a
+
