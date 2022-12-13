@@ -1,15 +1,10 @@
 # import our helpers
-import sys
-from types import SimpleNamespace
-from utils import load, show, day, TRACE, Map, Path
-import visualizations as viz
+from utils import load, show, day
 
 ####### GLOBALS #########
 
 # load todays input data as a docstring
 TEXT = load(day(__file__)).splitlines()
-# convenient for passing working between parts 1 and 2, and relevant stuff to vizualations 
-NS = SimpleNamespace()
 
 INPUT_GROUPS = [TEXT[n:n+2] for n in range(0,len(TEXT),3)]
 
@@ -52,34 +47,32 @@ def rcmp(sig1, sig2, indent=0):
         return res
 
 def p1(expect=5682):
-    c = 0
-    i = 1
+    tot = 0
+    pair = 1
     for sig1,sig2 in INPUT_GROUPS:
-        print(f"== Pair {i} ==\nCompare {sig1} vs {sig2}")
+        print(f"== Pair {pair} ==\nCompare {sig1} vs {sig2}")
         if rcmp(eval(sig1), eval(sig2)):
-            c+=i
-        i += 1
-    return c
+            tot += pair
+        pair += 1
+    return tot
 
 ######## Part 2 ##########
 class Signal:
     def __init__(self,txt):
-        self.sig=eval(txt)
+        self.sig = eval(txt)
 
     def __lt__(self, signal):
-        """declaring this enables sorted to compare objects"""
+        """declaring this enables sorted() to compare objects"""
         return rcmp(self.sig, signal.sig)
 
 def p2(expect=20304):
     div1_signal = "[[2]]"
     div2_signal = "[[6]]"
-    sigs = [Signal(sigtxt) for sigtxt in TEXT+[div1_signal, div2_signal] if sigtxt]
-    ordered=[str(signal.sig) for signal in sorted(sigs)]
+    signals = [Signal(sigtxt) for sigtxt in TEXT+[div1_signal, div2_signal] if sigtxt]
+    ordered=[str(signal.sig) for signal in sorted(signals)]
     div1_index = ordered.index(div1_signal) + 1
     div2_index = ordered.index(div2_signal) + 1
     return div1_index * div2_index
 
 if __name__ == "__main__":
     show(p1, p2)
-    #viz.viz?p1(NS)
-    #viz.viz?p2(NS)

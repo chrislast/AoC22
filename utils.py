@@ -222,12 +222,12 @@ def decode4x6font(xypos):
         line = line[:,5:]
     return txt
 
-def flatten(l):
-    a = []
-    for _ in l:
-        if isinstance(_,int):
-            a.append(_)
+def flatten(iterable):
+    result = []
+    iterable_types = (list,set,tuple) # ignore dict as it loses information
+    for item in iterable:
+        if isinstance(item, iterable_types):
+            result += flatten(item)
         else:
-            a += flatten(_)
-    return a
-
+            result.append(item)
+    return tuple(result)
