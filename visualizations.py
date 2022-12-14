@@ -200,8 +200,17 @@ def viz12p2(ns):
         img.putpixel((x*3+1, y*3+1), ord("P"))
     img.resize((w*9, h*9)).save("output/day12b.png")
 
-
-
+def viz14(ns):
+    array, floor, minx, maxx = ns.p1
+    array[0,500] = 1
+    m=Map(array[:floor+2,minx-1:maxx+2])
+    w,h = m.img.size
+    m.img.resize((w*3,h*3)).save("output/day14a.png")
+    array, floor, minx, maxx = ns.p2
+    array[0,500] = 1
+    m=Map(array[:floor+2,minx-1:maxx+2])
+    w,h = m.img.size
+    m.img.resize((w*3,h*3)).save("output/day14b.png")
 
 # def viz3a(counters):
 #     """stacked bar graph"""
