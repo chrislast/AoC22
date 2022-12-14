@@ -3,6 +3,7 @@ import sys
 from types import SimpleNamespace
 from utils import load, show, day, TRACE, Map, Path
 import visualizations as viz
+import numpy as np
 
 ####### GLOBALS #########
 
@@ -11,16 +12,17 @@ TEXT = load(day(__file__)).splitlines()
 # convenient for passing working between parts 1 and 2, and relevant stuff to vizualations 
 NS = SimpleNamespace()
 
-if len(sys.argv) > 1:
- TEXT = """
-""".splitlines()[1:]
+# ARRAY = np.zeros((z,y,x), dtype="uint8") # 3D Array
+# ARRAY_SLICE = ARRAY[0:2,0:3,22:26] # 2 layers, 3 rows, 4 columns
+# ARRAY_SLICE = ARRAY[0:2,:,22:26] # 2 layers, all rows, 4 columns
+# Map(ARRAY).show()
 
 # parse the input
 def parse(line):
     a,b,*c = line.split()
     return a, int(b), c
 
-PARSED = [parse(_) for _ in TEXT]
+# PARSED = [parse(_) for _ in TEXT]
 
 ######## Part 1 ##########
 def p1(expect=0):

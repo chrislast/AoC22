@@ -1,5 +1,5 @@
 # AoC22
-[Advent of Code 2022](https://adventofcode.com/2022) Python 3 solutions
+[Advent of Code 2022](https://adventofcode.com/2022) Python 3.11 solutions
 
 ## Diary
 
@@ -23,7 +23,7 @@
 |8b|&nbsp; | 59ms | [![](./output/day8b.png)](./output/day8b.png) tree house (white) | find the local maximums from each point in a 2D array - O(N2) alert! <br />__29 minutes__
 |9a|Rope Bridge<br />[🌐](https://adventofcode.com/2022/day/9)[💾](./day9.py) | 7ms | [![](./output/day9a.gif)](./output/day9a.gif) | overslept :( then massively overcomplicated the rope tail updater by using compound if-then-elses; replaced my original 2-knot head tail solution with generic version from part 2 with length 2 <br />__40? minutes__
 |9b|&nbsp; | 32ms | [![](./output/day9b.gif)](./output/day9b.gif)  | stuck for ages debugging complicated tail updater; eventually replaced that with much simpler version and it worked then simplified everything else to end up looking quite pleasing, good for animation too! <br />__96?? minutes__
-|10a|Cathode-Ray Tube<br />[🌐](https://adventofcode.com/2022/day/10)[💾](./day10.py) | 0ms | [![](./output/day10a.png)](./output/day10a.png) | a comprehension test in two parts with a suitably satisfying end <br />__21 minutes__
+|10a|Cathode-Ray Tube<br />[🌐](https://adventofcode.com/2022/day/10)[💾](./day10.py) | 0ms | [![](./output/day10a.png)](./output/day10a.png) | a comprehension test in two parts with a suitably satisfying end and an opportunity to use the new case statement<br />__21 minutes__
 |10b|&nbsp;| 0ms | [![](./output/day10b.png)](./output/day10b.png)  | hmm my code is all #s... a useful reminder that [["."]\*40]\*6 gives you 6 references to the same array! <br />__35 minutes__
 |11a|Monkey in the Middle<br />[🌐](https://adventofcode.com/2022/day/11)[💾](./day11.py) | 1ms | [![](./output/day11a.png)](./output/day11a.png) | easy enough to understand, slightly painful to parse, made easier especially in part 2 by monkeypatching my monkeys after creating them. Monkey business indeed! <br />__63 minutes__
 |11b|&nbsp;| 196ms | [![](./output/day11b.png)](./output/day11b.png)  | I tried it without the mentioned worry reduction strategy first of course as python can handle arbitrarily big integers, but it also takes an arbitrarily very long time, so strategies it is, thankfully the required strategy didn't involve caching monkey states and came to me quite quickly, no-one wants to watch this animation! <br />__16 minutes__
@@ -31,8 +31,8 @@
 |12b|&nbsp;| 17ms | [![](./output/day12b.png)](./output/day12b.png) red=start, blue=target| this time find your way to ground level from the top, should have been trivial swapping start position and end condition but triggered a bug in my previous solution when path hit row 0 and confused me for a long while. <br />__46 minutes__
 |13a|Distress Signal<br />[🌐](https://adventofcode.com/2022/day/13)[💾](./day13.py) | 10ms | [![](./output/day13a.png)](./output/day13a.png) | fell into a bear trap; this looked like a simple flatten and native list compare problem so I thought my super small recursive flatten function would get my silver star, but the list exhaustion requirement meant I went back to the drawing board, threw out the flatten function (sent to utils.py) and hand-crafted a recursive list walker complete with print instrumentation to match the example commentary <br />__74 minutes__
 |13b|&nbsp; | 21ms | [![](./output/day13b.png)](./output/day13b.png) | A lot easier than part 2 - python just needs a **\_\_lt\_\_** function in a class to sort objects so I created a very simple signal class and used the compare function from part 1 to **sorted()** all the signals, two indexes later and I was done  <br />__12 minutes__
-|14a|<br />[🌐](https://adventofcode.com/2022/day/14)[💾](./day14.py) | <!-- 0.0s --> | [![](./output/day14a.png)](./output/day14a.png) | __<br />__
-|14b|&nbsp;                                                                                 | <!-- 0.0s --> | [![](./output/day14b.png)](./output/day14b.png)  | <br />
+|14a|Regolith Reservoir<br />[🌐](https://adventofcode.com/2022/day/14)[💾](./day14.py) | 255ms | [![](./output/day14a.png)](./output/day14a.png) | Thankfully I did some numpy refresher homework yesterday. the hardest part for me was probably building the map to start with<br />__49 minutes__
+|14b|&nbsp;                                                                                 | 7.446s | [![](./output/day14b.png)](./output/day14b.png)  | Got some low results for sand on part2 then realised array[:,:] doesn't make a copy it's just a slice of the original so my part 2 was only showing new sand on top of the complete part 1.  changed the answer to cound sand in final array instead of tracking sand poured in (and used array.copy() too!)<br />__24 minutes__
 |15a|<br />[🌐](https://adventofcode.com/2022/day/15)[💾](./day15.py) | <!-- 0.0s --> | [![](./output/day15a.png)](./output/day15a.png) | <br />
 |15b|&nbsp;                                                                                 | <!-- 0.0s --> | [![](./output/day15b.png)](./output/day15b.png)  | <br />
 |16a|<br />[🌐](https://adventofcode.com/2022/day/16)[💾](./day16.py) | <!-- 0.0s --> | [![](./output/day16a.png)](./output/day16a.png) | <br />
