@@ -231,3 +231,6 @@ def flatten(iterable):
         else:
             result.append(item)
     return tuple(result)
+
+def using_example():
+    return len(sys.argv)>1
