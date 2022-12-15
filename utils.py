@@ -9,6 +9,7 @@ import numpy as np
 
 # globals
 NS = SimpleNamespace()
+USING_EXAMPLE = len(sys.argv)>1
 
 TESTS = SimpleNamespace(
     FAILED = 0,
@@ -232,5 +233,4 @@ def flatten(iterable):
             result.append(item)
     return tuple(result)
 
-def using_example():
-    return len(sys.argv)>1
+using_example = len(sys.argv)>1

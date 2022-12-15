@@ -1,5 +1,4 @@
 # import our helpers
-import sys
 from types import SimpleNamespace
 from utils import load, show, day, TRACE, Map, Path
 import visualizations as viz
@@ -35,5 +34,4 @@ def p2(expect=0):
 
 if __name__ == "__main__":
     show(p1, p2)
-    #viz.viz?p1(NS)
-    #viz.viz?p2(NS)
+    #viz.viz?(NS)
