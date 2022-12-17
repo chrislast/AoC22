@@ -232,5 +232,3 @@ def flatten(iterable):
         else:
             result.append(item)
     return tuple(result)
-
-using_example = len(sys.argv)>1
