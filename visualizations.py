@@ -212,6 +212,10 @@ def viz14(ns):
     w,h = m.img.size
     m.img.resize((w*3,h*3)).save("output/day14b.png")
 
+def viz17(ns):
+    gif = [Map(_).img.resize((7*5,50*5)) for _ in ns.boards]
+    gif[-1].save("output/day17a.gif", append_images=gif, save_all=True)
+
 # def viz3a(counters):
 #     """stacked bar graph"""
 #     fig, ax = plt.subplots()
