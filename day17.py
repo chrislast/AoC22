@@ -9,7 +9,7 @@ import numpy as np
 # load todays input data as a docstring
 TEXT = load(day(__file__)).splitlines()[0]
 # convenient for passing working between parts 1 and 2, and relevant stuff to vizualations 
-NS = SimpleNamespace(boards=[])
+NS = SimpleNamespace(boards=[], viz=False)
 
 FLOOR = 50
 BOARD_WIDTH = 7
