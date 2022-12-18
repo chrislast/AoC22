@@ -213,7 +213,13 @@ def viz14(ns):
     m.img.resize((w*3,h*3)).save("output/day14b.png")
 
 def viz17(ns):
-    gif = [Map(_).img.resize((7*5,50*5)) for _ in ns.boards]
+    gif = []
+    font = ImageFont.load_default()
+    for h, board in ns.boards:
+        img = Map(board).img.resize((7*5,50*5))
+        d = ImageDraw.Draw(img)
+        d.text((1,1), f" {h:4d} ", fill=(200,200,200), font=font)
+        gif.append(img)
     gif[-1].save("output/day17a.gif", append_images=gif, save_all=True)
 
 # def viz3a(counters):

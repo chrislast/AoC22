@@ -9,12 +9,10 @@ import numpy as np
 # load todays input data as a docstring
 TEXT = load(day(__file__)).splitlines()[0]
 # convenient for passing working between parts 1 and 2, and relevant stuff to vizualations 
-NS = SimpleNamespace(viz=True, boards=[])
+NS = SimpleNamespace(boards=[])
 
-# ARRAY = np.zeros((z,y,x), dtype="uint8") # 3D Array
-# ARRAY_SLICE = ARRAY[0:2,0:3,22:26] # 2 layers, 3 rows, 4 columns
-# ARRAY_SLICE = ARRAY[0:2,:,22:26] # 2 layers, all rows, 4 columns
-# Map(ARRAY).show()
+FLOOR = 50
+BOARD_WIDTH = 7
 
 SHAPES = [
     np.array([1,1,1,1], dtype="uint8"),
@@ -30,11 +28,10 @@ SHAPES = [
     np.array([[6],
               [6],
               [6],
-              [6]], dtype="uint8"),
+              [6]],     dtype="uint8"),
 
     np.array([[5,5],
-              [5,5]], dtype="uint8"),
-]
+              [5,5]],   dtype="uint8")]
 
 class Shape:
     INDEX = 0
@@ -47,15 +44,14 @@ class Shape:
             self.h = 1
         Shape.INDEX = (Shape.INDEX + 1) % 5
 
-FLOOR = 50
-BOARD_WIDTH = 7
-
 class Game:
     def __init__(self,instructions):
+        Shape.INDEX = 0
         self.board = np.zeros((FLOOR, BOARD_WIDTH), dtype="uint8")
         self.instructions = instructions
         self.instruction_index = -1
         self.trimmed = 0
+        self.shapes = 0
 
     @property
     def next_instruction(self):
@@ -67,11 +63,12 @@ class Game:
             self.trimmed += 1
             self.board[1:FLOOR,:] = self.board[0:FLOOR-1,:]
             if NS.viz:
-                NS.boards.append(self.board.copy())
+                NS.boards.append((self.height+self.trimmed, self.board.copy()))
 
     def add_new_shape(self):
         self.trim_lines()
         shape = Shape()
+        self.shapes += 1
         shape.x = 2
         try:
             base = np.where(self.board != 0)[0][0]
@@ -84,7 +81,7 @@ class Game:
         s = self.shape
         self.board[s.y:s.y+s.h,s.x:s.x+s.w] += s.s
         if NS.viz:
-            NS.boards.append(self.board.copy())
+            NS.boards.append((self.height+self.trimmed, self.board.copy()))
 
     def shape_overlaps(self,x,y):
         s = self.shape
@@ -99,25 +96,21 @@ class Game:
 
     def move_shape(self):
         s = self.shape
-        x = s.x
-        y = s.y
         if self.next_instruction == ">":
-            x += 1
-            if x + s.w > BOARD_WIDTH or self.shape_overlaps(x,y):
-                x -= 1
-        else:
-            x -= 1
-            if x < 0 or self.shape_overlaps(x,y):
-                x += 1
-        s.x = x
-
-        y += 1
-        if y + s.h > FLOOR or self.shape_overlaps(x,y):
-            y -= 1
+            if s.x+1+s.w <= BOARD_WIDTH and not self.shape_overlaps(s.x+1,s.y):
+                s.x += 1 # move shape right
+        else: # "<"
+            if s.x-1 >= 0 and not self.shape_overlaps(s.x-1,s.y):
+                s.x -= 1 # move shape left
+        if s.y+s.h+1 > FLOOR or self.shape_overlaps(s.x,s.y+1):
             self.plant_shape()
             return False
         else:
-            s.y = y
+            s.y += 1 # move shape down
+            if NS.viz: # add to gif animation?
+                b = self.board.copy()
+                b[s.y:s.y+s.h,s.x:s.x+s.w] += s.s
+                NS.boards.append((self.height+self.trimmed, b))
         return True
 
     def drop_new_shape(self):
@@ -145,11 +138,15 @@ class Game:
 
     @property
     def state(self):
-        return f"{max(self.depth_map)}##{self.instruction_index}#{Shape.INDEX}##{self.depth_map}"
+        return f"{self.instruction_index}##{Shape.INDEX}##{self.depth_map}"
+
+    def __repr__(self):
+        Map(self.board).show()
+        return f"Board with {self.shapes} shapes and a height of {self.height+self.trimmed}"
+
 
 ######## Part 1 ##########
 def p1(expect=3130):
-    NS.viz = True
     tetris = Game(TEXT)
     for _ in range(2022):
         tetris.drop_new_shape()
@@ -157,8 +154,6 @@ def p1(expect=3130):
 
 ######## Part 2 ##########
 def p2(expect=1556521739139):
-    NS.viz = False
-    Shape.INDEX = 0
     tetris = Game(TEXT)
     states = dict()
     state = None
@@ -186,5 +181,8 @@ def p2(expect=1556521739139):
     return tcycles * cycle_height + cycle_turn_height
 
 if __name__ == "__main__":
+    NS.viz = False
     show(p1, p2)
+    NS.viz = True
+    p1()
     viz.viz17(NS)
