@@ -1,6 +1,6 @@
 # import our helpers
 from types import SimpleNamespace
-from utils import load, show, day, TRACE, Map, Path
+from utils import load, show, day, TRACE, Map, Path, USING_EXAMPLE
 import visualizations as viz
 
 ####### GLOBALS #########
@@ -18,7 +18,7 @@ def elfduties(line):
     return elves
 
 ######## Part 1 ##########
-def p1(expect=571):
+def p1(expect=2 if USING_EXAMPLE else 571):
     tot = 0
     NS.p1 = []
     for line in TEXT.splitlines():
@@ -29,7 +29,7 @@ def p1(expect=571):
     return tot
 
 ######## Part 2 ##########
-def p2(expect=917):
+def p2(expect=4 if USING_EXAMPLE else 917):
     tot = 0
     for line in TEXT.splitlines():
         elf1, elf2 = elfduties(line)

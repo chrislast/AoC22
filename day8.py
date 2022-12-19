@@ -1,6 +1,6 @@
 # import our helpers
 from types import SimpleNamespace
-from utils import load, show, day, TRACE, Map, Path
+from utils import load, show, day, TRACE, Map, Path, USING_EXAMPLE
 import visualizations as viz
 
 ####### GLOBALS #########
@@ -22,7 +22,7 @@ except:
     DATA = Map(TEXT)
 
 ######## Part 1 ##########
-def p1(expect=1733):
+def p1(expect=21 if USING_EXAMPLE else 1733):
     visible = set() # no duplicates please
 
     # look from top and bottom edges
@@ -77,7 +77,7 @@ def score(tx,ty,tz):
     return u*l*d*r
 
 
-def p2(expect=284648):
+def p2(expect=8 if USING_EXAMPLE else 284648):
     smax = 0
     for x in range(W):
         for y in range(H):

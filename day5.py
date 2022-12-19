@@ -1,6 +1,6 @@
 # import our helpers
 from types import SimpleNamespace
-from utils import load, show, day, TRACE, Map, Path
+from utils import load, show, day, TRACE, Map, Path, USING_EXAMPLE
 import visualizations as viz
 
 ####### GLOBALS #########
@@ -29,7 +29,7 @@ for cmd in CMDTXT:
     COMMANDS.append([int(_[1]),int(_[3])-1,int(_[5])-1])
 
 ######## Part 1 ##########
-def p1(expect="VJSFHWGFT"):
+def p1(expect="CMZ" if USING_EXAMPLE else "VJSFHWGFT"):
     docks=DOCKS[:]
     for n,src,tgt in COMMANDS:
         docks[tgt] = docks[src][:n][::-1]+docks[tgt]
@@ -38,7 +38,7 @@ def p1(expect="VJSFHWGFT"):
     return "".join(_[0] for _ in docks)
 
 ######## Part 2 ##########
-def p2(expect="LCTQFBVZV"):
+def p2(expect="MCD" if USING_EXAMPLE else "LCTQFBVZV"):
     docks=DOCKS[:]
     for n,src,tgt in COMMANDS:
         docks[tgt] = docks[src][:n]+docks[tgt]

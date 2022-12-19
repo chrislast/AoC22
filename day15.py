@@ -51,7 +51,7 @@ SENSORS = [Sensor(spos,bpos) for spos,bpos in PARSED]
 BEACONS = [bpos for _,bpos in PARSED]
 
 ######## Part 1 ##########
-def p1(expect=4424278):
+def p1(expect=26 if USING_EXAMPLE else 4424278):
     """painful brute force"""
     tot = 0
     row = 10 if USING_EXAMPLE else 2_000_000
@@ -64,7 +64,7 @@ def p1(expect=4424278):
     return tot # count of visible space with no beacon
 
 ######## Part 2 ##########
-def p2(expect=10382630753392):
+def p2(expect=56000011 if USING_EXAMPLE else 10382630753392):
     """smart brute force"""
     x,y = (0,0)
     cols = rows = 20 if USING_EXAMPLE else 4_000_000

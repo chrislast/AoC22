@@ -1,5 +1,5 @@
 # import our helpers
-from utils import load, show, day, TRACE, Map, Path
+from utils import load, show, day, TRACE, Map, Path, USING_EXAMPLE
 import visualizations as viz
 from types import SimpleNamespace
 
@@ -28,7 +28,7 @@ def play(rules):
     return total, animate
 
 ######## Part 1 ##########
-def p1(expect=10994):
+def p1(expect=15 if USING_EXAMPLE else 10994):
     # A B C = rock paper scissors
     # X Y Z = rock paper scissors
     rules = {
@@ -39,7 +39,7 @@ def p1(expect=10994):
     return tot
 
 ######## Part 2 ##########
-def p2(expect=12526):
+def p2(expect=12 if USING_EXAMPLE else 12526):
     # A B C = rock paper scissors
     # X Y Z = lose draw win
     rules = {

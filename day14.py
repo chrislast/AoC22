@@ -1,6 +1,6 @@
 # import our helpers
 from types import SimpleNamespace
-from utils import load, show, day, TRACE, Map, Path
+from utils import load, show, day, TRACE, Map, Path, USING_EXAMPLE
 import visualizations as viz
 import numpy as np
 
@@ -70,7 +70,7 @@ def add_grain(arr):
                 return False
             return True          # sand placed successfully
 
-def p1(expect=1298):
+def p1(expect=24 if USING_EXAMPLE else 1298):
     arr = ARRAY.copy()
     while add_grain(arr):
         pass
@@ -79,7 +79,7 @@ def p1(expect=1298):
 
 
 ######## Part 2 ##########
-def p2(expect=25585):
+def p2(expect=93 if USING_EXAMPLE else 25585):
     arr = ARRAY.copy()
     # add a floor
     arr[NS.floor,:] = ROCK

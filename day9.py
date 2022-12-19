@@ -1,6 +1,6 @@
 # import our helpers
 from types import SimpleNamespace
-from utils import load, show, day, TRACE, Map, Path
+from utils import load, show, day, TRACE, Map, Path, USING_EXAMPLE
 import visualizations as viz
 
 ####### GLOBALS #########
@@ -51,12 +51,12 @@ def rope_tail_positions(knots):
         NS.viz[-1].append(rope.copy()) # store rope for visualization use
     return tail_visited
 
-def p1(expect=5695):
+def p1(expect=88 if USING_EXAMPLE else 5695):
     return len(rope_tail_positions(knots=2))
 
 ######## Part 2 ##########
 
-def p2(expect=2434):
+def p2(expect=36 if USING_EXAMPLE else 2434):
     return len(rope_tail_positions(knots=10))
 
 if __name__ == "__main__":

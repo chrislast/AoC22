@@ -1,6 +1,6 @@
 # import our helpers
 from types import SimpleNamespace
-from utils import load, show, day, TRACE, Map, Path
+from utils import load, show, day, TRACE, Map, Path, USING_EXAMPLE
 import visualizations as viz
 from collections import deque
 ####### GLOBALS #########
@@ -26,7 +26,7 @@ def rsize(dct, pth):
             LOOKUP[pth] += v
 
 ######## Part 1 ##########
-def p1(expect=1611443):
+def p1(expect=95437 if USING_EXAMPLE else 1611443):
     root = {}
     cwd = root
     up = []
@@ -61,7 +61,7 @@ def p1(expect=1611443):
     return sum(dirsizes)
 
 ######## Part 2 ##########
-def p2(expect=2086088):
+def p2(expect=24933642 if USING_EXAMPLE else 2086088):
     capacity = 70_000_000
     needed = 30_000_000
     used = LOOKUP[""]

@@ -41,8 +41,8 @@
 |17b|&nbsp; | 197ms | [![](./output/day17b.png)](./output/day17b.png) | drop 1 trillion blocks? OK let's see how long it takes to repeat itself... actually only just past the 2022 turns of part one, did the maths and was off by 4 on the example :( spent a very long time debugging and after dumping height on each turn realized that part 2 started with the wrong shape! I had forgot to reset the Shape.INDEX class variable to 0 before part 2.  I also spent a lot of time looking for repeating cycle using an unmodded Shape.INDEX value in the hash meaning it would have ran forever, as a "fix" I implemented a much smaller sliding window so I didn't have to search a huge array for what I thought was a massive repeat loop only to discover the ~2k loop size when I eventually fixed the hash, the sliding window at least makes the animation look better!<br />__15h 9m__ probably 2h+ active...
 |18a|Boiling Boulders<br />[🌐](https://adventofcode.com/2022/day/18)[💾](./day18.py) | 18ms | [![](./output/day18a.png)](./output/day18a.png) | A return to quick solutions! <br />__0h10m__🥳
 |18b|&nbsp; | 33ms | [![](./output/day18b.png)](./output/day18b.png)  | This should have been quick too, but Arggh GIGO fail, implemented many algorithms that probably all worked but all gave different answers only to find when I inspected my array planes visually that some outside space was still marked as inside space.  I only went through my array marking outside positions once in one direction so never backfilled the ones which became outside when a later outside one was found, not a problem for the example, big problem for the real data 😥 Problem solved, I initially tried subtracting internal face count, but filling inside space with rock and getting part 1 to do the maths was much easier<br />__2h40m__ 🤦
-|19a|<br />[🌐](https://adventofcode.com/2022/day/19)[💾](./day19.py) | <!-- 0.0s --> | [![](./output/day19a.png)](./output/day19a.png) | <br />
-|19b|&nbsp;                                                                                 | <!-- 0.0s --> | [![](./output/day19b.png)](./output/day19b.png)  | <br />
+|19a|<br />[🌐](https://adventofcode.com/2022/day/19)[💾](./day19.py) | 102s | [![](./output/day19a.png)](./output/day19a.png) | Massively overengineered it by creating Robot classes when a 4 integer was fine for tracking robots, even then it was really slow. Optimized by stopping miner creation if inventory could create any miner or there were more miners than needed to create any new robot, this gave too low answer on example, implemented a full text description dumper for chosen solution to compare with example and the problem was in undocumented part 2.  Allowed 2 more robots in inventory for each miner.  It worked.  feels bad tbh it's more of a #worksforme than a generic solution<br />__6h36m__
+|19b|&nbsp; | 2831s | [![](./output/day19b.png)](./output/day19b.png)  | Part 1 should just work on more turns, the tree will get bigger, but eventually the miner cap will stop miner building so just gave it a go.  It also worked after a loong thinking time... there must be a better way... maybe make geode cracker creation the target instead of turn?<br />__1h3m__ mostly watching it run...
 |20a|<br />[🌐](https://adventofcode.com/2022/day/20)[💾](./day20.py) | <!-- 0.0s --> | [![](./output/day20a.png)](./output/day20a.png) | <br />
 |20b|&nbsp;                                                                                 | <!-- 0.0s --> | [![](./output/day20b.png)](./output/day20b.png)  | <br />
 |21a|<br />[🌐](https://adventofcode.com/2022/day/21)[💾](./day21.py) | <!-- 0.0s --> | [![](./output/day21a.png)](./output/day21a.png) | <br />
@@ -54,6 +54,19 @@
 |24a|<br />[🌐](https://adventofcode.com/2022/day/24)[💾](./day24.py) | <!-- 0.0s --> | [![](./output/day24a.png)](./output/day24a.png) | <br />
 |24b|&nbsp;                                                                                 | <!-- 0.0s --> | [![](./output/day24b.png)](./output/day24b.png)  | <br />
 |25a|<br />[🌐](https://adventofcode.com/2022/day/25)[💾](./day25.py) | <!-- 0.0s --> | [![](./output/day25a.png)](./output/day25a.png) | <br />
+
+## Examples!
+
+I lost time on an early day by not testing the example code, it does save a bit of time if you're *sure*, but otherwise it's always wise.  I added a `USING_EXAMPLE` boolean to my library this year so if I launch the test with **any** parameter e.g. `py test10.py 2` it tests the example instead.  With a little support from utils.py it becomes almost free to test the example first.
+
+# Reddit
+
+https://www.reddit.com/r/adventofcode
+
+Never really used it for AoC before but helped me see a new approach on a couple of notable occasions.
+
+* Day 16-2 - Send the elephant in after Santa - worked a treat
+* Day 18-2 - Fill in the air pockets with rock and let part 1 solve it
 
 ## Powershell
 

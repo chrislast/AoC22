@@ -1,5 +1,5 @@
 # import our helpers
-from utils import load, show, day, TRACE, Map, Path
+from utils import load, show, day, TRACE, Map, Path, USING_EXAMPLE
 import visualizations as viz
 from types import SimpleNamespace
 
@@ -16,7 +16,7 @@ def pri(c):
     return ord(c)-ord('a')+1
 
 ######## Part 1 ##########
-def p1(expect=7997):
+def p1(expect=157 if USING_EXAMPLE else 7997):
     tot = 0
     for backpack in TEXT:
         sz = len(backpack)//2
@@ -25,7 +25,7 @@ def p1(expect=7997):
     return tot
 
 ######## Part 2 ##########
-def p2(expect=2545):
+def p2(expect=70 if USING_EXAMPLE else 2545):
     tot = 0
     for i in range(0,len(TEXT),3):
         grp = TEXT[i:i+3]

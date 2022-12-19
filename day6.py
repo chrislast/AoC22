@@ -1,6 +1,6 @@
 # import our helpers
 from types import SimpleNamespace
-from utils import load, show, day, TRACE, Map, Path
+from utils import load, show, day, TRACE, Map, Path, USING_EXAMPLE
 import visualizations as viz
 
 ####### GLOBALS #########
@@ -11,14 +11,14 @@ TXT = load(day(__file__))
 NS = SimpleNamespace(p1=[],p2=[])
 
 ######## Part 1 ##########
-def p1(expect=1140):
+def p1(expect=11 if USING_EXAMPLE else 1140):
     sz=4
     for i in range(len(TXT)):
         if len(set(TXT[i:i+sz])) == sz:
             return i+sz
 
 ######## Part 2 ##########
-def p2(expect=3495):
+def p2(expect=26 if USING_EXAMPLE else 3495):
     sz=14
     for i in range(len(TXT)):
         if len(set(TXT[i:i+sz])) == sz:

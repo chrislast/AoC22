@@ -1,7 +1,7 @@
 # import our helpers
 import sys
 from types import SimpleNamespace
-from utils import load, show, day, TRACE, Map, Path
+from utils import load, show, day, TRACE, Map, Path, USING_EXAMPLE
 import visualizations as viz
 from collections import deque, namedtuple
 
@@ -30,7 +30,7 @@ NODE = namedtuple("BFSnode", "x y z steps route")
 NS.map = MAP
 
 ######## Part 1 ##########
-def p1(expect=504):
+def p1(expect=31 if USING_EXAMPLE else 504):
     """climb the hill using breadth-first search to reach target position"""
     BFS = deque([NODE(*START, ord("a"), 0, [START])])
     VISITED = set([START])
@@ -51,7 +51,7 @@ def p1(expect=504):
     return pos.steps
 
 ######## Part 2 ##########
-def p2(expect=500):
+def p2(expect=29 if USING_EXAMPLE else 500):
     """descend hill using breadth-first search to reach target elevation"""
     BFS = deque([NODE(*END, ord("z"), 0, [END])])
     VISITED = set([END])

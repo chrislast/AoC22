@@ -1,6 +1,6 @@
 # import our helpers
 from types import SimpleNamespace
-from utils import load, show, day, TRACE, Map, Path
+from utils import load, show, day, TRACE, Map, Path, USING_EXAMPLE
 import visualizations as viz
 from collections import deque
 import math
@@ -64,12 +64,12 @@ def monkey_business_after_playing_rounds(rounds):
     monkey_business = math.prod(sorted([m.inspects for m in Monkey.monkeys])[-2:])
     return monkey_business
 
-def p1(expect=69918):
+def p1(expect=10605 if USING_EXAMPLE else 69918):
     Monkey.monkeys = [Monkey(monkey_info) for monkey_info in INPUT_GROUPS]
     return monkey_business_after_playing_rounds(20)
 
 ######## Part 2 ##########
-def p2(expect=19573408701):
+def p2(expect=2713310158 if USING_EXAMPLE else 19573408701):
     Monkey.monkeys = [Monkey(monkey_info) for monkey_info in INPUT_GROUPS]
     # calculate a divisor to use on `worry` which won't affect monkey selection by
     # finding the lowest common multiple of all monkeys' divisible_by test values

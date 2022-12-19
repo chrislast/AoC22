@@ -1,5 +1,5 @@
 # import our helpers
-from utils import load, show, day
+from utils import load, show, day, USING_EXAMPLE
 
 ####### GLOBALS #########
 
@@ -46,7 +46,7 @@ def rcmp(sig1, sig2, indent=0):
             print(f"{indent_text} - Right side ran out of items, so inputs are not in the right order")
         return res
 
-def p1(expect=5682):
+def p1(expect=13 if USING_EXAMPLE else 5682):
     tot = 0
     pair = 1
     for sig1,sig2 in INPUT_GROUPS:
@@ -65,7 +65,7 @@ class Signal:
         """declaring this enables sorted() to compare objects"""
         return rcmp(self.sig, signal.sig)
 
-def p2(expect=20304):
+def p2(expect=140 if USING_EXAMPLE else 20304):
     div1_signal = "[[2]]"
     div2_signal = "[[6]]"
     signals = [Signal(sigtxt) for sigtxt in TEXT+[div1_signal, div2_signal] if sigtxt]

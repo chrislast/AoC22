@@ -1,6 +1,6 @@
 # import our helpers
 from types import SimpleNamespace
-from utils import load, show, day, TRACE, Map, Path, decode4x6font
+from utils import load, show, day, TRACE, Map, Path, decode4x6font, USING_EXAMPLE
 import visualizations as viz
 
 ####### GLOBALS #########
@@ -11,7 +11,7 @@ TEXT = load(day(__file__)).splitlines()
 NS = SimpleNamespace()
 
 ######## Part 1 ##########
-def p1(expect=12980):
+def p1(expect=13140 if USING_EXAMPLE else 12980):
     t=0
     rx=1
     look=[0]*1000
@@ -29,7 +29,7 @@ def p1(expect=12980):
     return strength
 
 ######## Part 2 ##########
-def p2(expect="BRJLFULP"):
+def p2(expect="????????" if USING_EXAMPLE else "BRJLFULP"):
     t=0
     rx=1
     screen=[["."]*40,["."]*40,["."]*40,["."]*40,["."]*40,["."]*40]

@@ -57,14 +57,14 @@ def panic(room,opened,turn,tot):
     flows.append(((31-turn)*newflow+tot, 30, tot, opened)) # add the no movement case
     return max(flows)
 
-def p1(expect=1850):
+def p1(expect=1651 if USING_EXAMPLE else 1850):
     return panic("AA",[],1,0)[0]
 
 ######## Part 2 ##########
 
 MINUTES_TO_TRAIN_AN_ELEPHANT = 4
 
-def p2(expect=2306):
+def p2(expect=1707 if USING_EXAMPLE else 2306):
     santa = panic(
         room="AA",
         opened = [],
@@ -81,7 +81,7 @@ def p2(expect=2306):
         opened = [],
         turn = 1 + MINUTES_TO_TRAIN_AN_ELEPHANT,
         tot = 0)
-
+    breakpoint()
     return santa[0]+elephant[0]
 
 if __name__ == "__main__":

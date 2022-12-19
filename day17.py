@@ -1,6 +1,6 @@
 # import our helpers
 from types import SimpleNamespace
-from utils import load, show, day, TRACE, Map, Path
+from utils import load, show, day, TRACE, Map, Path, USING_EXAMPLE
 import visualizations as viz
 import numpy as np
 
@@ -146,14 +146,14 @@ class Game:
 
 
 ######## Part 1 ##########
-def p1(expect=3130):
+def p1(expect=3068 if USING_EXAMPLE else 3130):
     tetris = Game(TEXT)
     for _ in range(2022):
         tetris.drop_new_shape()
     return tetris.height + tetris.trimmed
 
 ######## Part 2 ##########
-def p2(expect=1556521739139):
+def p2(expect=1514285714288 if USING_EXAMPLE else 1556521739139):
     tetris = Game(TEXT)
     states = dict()
     state = None
