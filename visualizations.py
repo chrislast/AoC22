@@ -222,6 +222,32 @@ def viz17(ns):
         gif.append(img)
     gif[-1].save("output/day17a.gif", append_images=gif, save_all=True)
 
+def viz23(ns):
+    gif1 = []
+    gif2 = []
+    for turn, elves in enumerate(ns.p2):
+        maxx = max([x for x,y in elves])
+        minx = min([x for x,y in elves])
+        maxy = max([y for x,y in elves])
+        miny = min([y for x,y in elves])
+        w = maxx-minx+1
+        h = maxy-miny+1
+        sz = w*h
+        res = sz-len(elves)
+        arr = np.zeros((h,w),dtype="uint8")
+        for x,y in elves:
+            arr[y-miny,x-minx] = ord("#")
+        png = Map(arr)
+        if turn<10:
+            blank1 = Map(np.zeros((h,w),dtype="uint8")).resize(3)
+            gif1.append(png)
+        gif2.append(png)
+    blank2 = Map(np.zeros((h,w),dtype="uint8")).resize(3)
+    gif1[-1].resize(3).save("output/day23a.gif", append_images=[blank1]+[_.resize(3) for _ in gif1], save_all=True)
+    gif2[-1].resize(3).save("output/day23b.gif", append_images=[blank2]+[_.resize(3) for _ in gif2], save_all=True)
+
+
+
 # def viz3a(counters):
 #     """stacked bar graph"""
 #     fig, ax = plt.subplots()

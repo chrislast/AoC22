@@ -49,8 +49,8 @@
 |21b|&nbsp;                                                                                 | <!-- 0.0s --> | [![](./output/day21b.png)](./output/day21b.png)  | <br />
 |22a|<br />[🌐](https://adventofcode.com/2022/day/22)[💾](./day22.py) | <!-- 0.0s --> | [![](./output/day22a.png)](./output/day22a.png) | <br />
 |22b|&nbsp;                                                                                 | <!-- 0.0s --> | [![](./output/day22b.png)](./output/day22b.png)  | <br />
-|23a|<br />[🌐](https://adventofcode.com/2022/day/23)[💾](./day23.py) | <!-- 0.0s --> | [![](./output/day23a.png)](./output/day23a.png) | <br />
-|23b|&nbsp;                                                                                 | <!-- 0.0s --> | [![](./output/day23b.png)](./output/day23b.png)  | <br />
+|23a|<br />[🌐](https://adventofcode.com/2022/day/23)[💾](./day23.py) | 2.58s | [![](./output/day23a.gif)](./output/day23a.gif) Just simulated each step as per the instructions, as soon as I have negative indexes and dynamic array sizes I prefer to use sets of (x,y) points to array manipulation but this was obviously not the extent of the suggested optimisation| <br />__2h23m__
+|23b|&nbsp; | **797s** | [![](./output/day23b.gif)](./output/day23b.gif) | Easy to convert part1 to new exit condition but it takes *13 minutes* to simulate, there is clearly a **lot** of optimisation left undone here<br />__21m__
 |24a|<br />[🌐](https://adventofcode.com/2022/day/24)[💾](./day24.py) | <!-- 0.0s --> | [![](./output/day24a.png)](./output/day24a.png) | <br />
 |24b|&nbsp;                                                                                 | <!-- 0.0s --> | [![](./output/day24b.png)](./output/day24b.png)  | <br />
 |25a|<br />[🌐](https://adventofcode.com/2022/day/25)[💾](./day25.py) | <!-- 0.0s --> | [![](./output/day25a.png)](./output/day25a.png) | <br />
