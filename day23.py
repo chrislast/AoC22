@@ -19,45 +19,34 @@ H,W = ARR.shape
 
 ######## Part 1 ##########
 def alone(elf,elves):
-    ex,ey = elf
-    for x in (-1,0,1):
+    ex, ey = elf
+    for x in (-1, 0, 1):
         for y in (-1, 0, 1):
-            if (x,y) != (0,0):
+            if (x,y) != (0, 0):
                 if (ex+x, ey+y) in elves:
                     return False
     return True
 
-def n(x,y,elfset):
-    if (x-1,y-1) in elfset or (x,y-1) in elfset or (x+1,y-1) in elfset:
-        return None
+def n(x, y, elfset, i=3):
+    if (x-1, y-1) in elfset or (x, y-1) in elfset or (x+1, y-1) in elfset:
+        return (x,y) if i == 0 else s(x, y, elfset, i-1)
     else:
         return x, y-1
-def s(x,y,elfset):
-    if (x-1,y+1) in elfset or (x,y+1) in elfset or (x+1,y+1) in elfset:
-        return None
+def s(x, y, elfset, i=3):
+    if (x-1, y+1) in elfset or (x, y+1) in elfset or (x+1, y+1) in elfset:
+        return (x,y) if i == 0 else w(x, y, elfset, i-1)
     else:
         return x, y+1
-def w(x,y,elfset):
-    if (x-1,y-1) in elfset or (x-1,y) in elfset or (x-1,y+1) in elfset:
-        return None
+def w(x, y, elfset, i=3):
+    if (x-1, y-1) in elfset or (x-1, y) in elfset or (x-1, y+1) in elfset:
+        return (x,y) if i == 0 else e(x, y, elfset, i-1)
     else:
         return x-1, y
-def e(x,y,elfset):
-    if (x+1,y-1) in elfset or (x+1,y) in elfset or (x+1,y+1) in elfset:
-        return None
+def e(x, y, elfset, i=3):
+    if (x+1, y-1) in elfset or (x+1, y) in elfset or (x+1, y+1) in elfset:
+        return (x,y) if i == 0 else n(x, y, elfset, i-1)
     else:
         return x+1, y
-
-def move(elf,elfset,turn):
-    ex,ey = elf
-    if turn%4 == 0:
-        return n(ex,ey,elfset) or s(ex,ey,elfset) or w(ex,ey,elfset) or e(ex,ey,elfset) or (ex,ey)
-    if turn%4 == 1:
-        return s(ex,ey,elfset) or w(ex,ey,elfset) or e(ex,ey,elfset) or n(ex,ey,elfset) or (ex,ey)
-    if turn%4 == 2:
-        return w(ex,ey,elfset) or e(ex,ey,elfset) or n(ex,ey,elfset) or s(ex,ey,elfset) or (ex,ey)
-    if turn%4 == 3:
-        return e(ex,ey,elfset) or n(ex,ey,elfset) or s(ex,ey,elfset) or w(ex,ey,elfset) or (ex,ey)
 
 def nextelves(elves,turn):
         elfset = set(elves)
@@ -67,7 +56,7 @@ def nextelves(elves,turn):
             if alone(elf,elves):
                 nextelves.append(elf)
                 continue
-            proposed[elf] = move(elf,elfset,turn)
+            proposed[elf] = [n,s,w,e][turn%4](*elf, elfset)
 
         for elf in list(proposed.keys()):
             pos = proposed.pop(elf)
