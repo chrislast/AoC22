@@ -53,7 +53,7 @@
 |23b|&nbsp; | **797s** | [![](./output/day23b.gif)](./output/day23b.gif) | Easy to convert part1 to new exit condition but it takes *13 minutes* to simulate, there is clearly a **lot** of optimisation left undone here<br />__21m__
 |24a|<br />[🌐](https://adventofcode.com/2022/day/24)[💾](./day24.py) | 478ms | [![](./output/day24a.png)](./output/day24a.png) | Another breadth first search but with no seen position caching due to the dynamic nature of blizzards forutnately the board was crowded enough that the states didn't grow very much and the solution was a surprisingly small number of turns.  I decided to precalculate all the wind positions for each turn to speed up search, but as the solution was a low number I expect most remained unused.  I tracked winds in separate sets to ease turn updates but only compared with the combined winds<br />__1h44m__
 |24b|&nbsp; | 1.276s | [![](./output/day24b.png)](./output/day24b.png)  | Very quick as it was modular enough to refactor the bfs out of part 1 and pass it start, end and starting turn values to cheer up the dismayed elf<br />__9m__
-|25a|<br />[🌐](https://adventofcode.com/2022/day/25)[💾](./day25.py) | <!-- 0.0s --> | [![](./output/day25a.png)](./output/day25a.png) | <br />
+|25a|<br />[🌐](https://adventofcode.com/2022/day/25)[💾](./day25.py) | 0ms | [![](./output/day25a.png)](./output/day25a.png) | SNAFU base 5 codec complete, just day 22 part 2 to complete...<br /> __24m38s__ 2 minutes slower than Ravishankar Sivalingam who would have easily topped the [leaderboard](https://adventofcode.com/2022/leaderboard/private/view/372326) if he'd started on day 1!
 
 ## Examples!
 
