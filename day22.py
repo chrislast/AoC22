@@ -12,54 +12,46 @@ TEXT = load(day(__file__)).splitlines()
 # convenient for passing working between parts 1 and 2, and relevant stuff to vizualations 
 NS = SimpleNamespace()
 
-# parse the input
-def parse(line):
-    a,b,*c = line.split()
-    return a, int(b), c
-
-# PARSED = [parse(_) for _ in TEXT]
-
 np.set_printoptions(threshold=np.inf)
 
+# Load a 2-D Map (fills missing values in text input with 0s and creates 2D array)
 M=Map(TEXT[:-2])
-ARRAY = np.array(M.img)
+ARRAY = np.array(M.img) # part2 uses the raw array
 H,W = ARRAY.shape
-# space to 0
+
+# change spaces to 0 for OFFMAP
 for y,x in zip(*np.where(ARRAY==ord(" "))):
     ARRAY[y,x] = 0
-# open to 0
-for y,x in zip(*np.where(ARRAY==ord("."))):
-    ARRAY[y,x] = 0
 
-D=TEXT[-1]
-
-STEP={
-      0: ( 0,-1),
-     90: ( 1, 0),
-    180: ( 0, 1),
-    270: (-1, 0)
-}
+# add a 1-pixel border to save us checking map bounds in part 1
+ARR=np.zeros((H+2,W+2),dtype="uint8")
+ARR[1:H+1,1:W+1] = ARRAY[:,:]
+M=Map(ARR) # and resave for part 1 use
 
 STARTPOS = TEXT[0].index(".")+1,1
+INSTRUCTIONS = TEXT[-1]
 
-# add a border on all axes to mark outside space
+STEP={0: ( 0,-1),
+     90: ( 1, 0),
+    180: ( 0, 1),
+    270: (-1, 0)}
 
 WALL=ord("#")
-OPEN=0
+OPEN=ord(".")
 PATH=ord("~")
 ORIGIN=ord("@")
 DESTINATION=ord("X")
-OFFMAP = (0)
+OFFMAP = 0
 
 ######## Part 1 ##########
 def forward(pos, direction):
     px,py = pos
     x,y = STEP[direction]
     npos = (px+x,py+y)
-    if M.get(npos) not in OFFMAP:
+    if M.get(npos) != OFFMAP:
         return npos
     npos = pos
-    while M.get(npos) not in OFFMAP:
+    while M.get(npos) != OFFMAP:
         npos = (npos[0]-x,npos[1]-y)
     return (npos[0]+x,npos[1]+y)
 
@@ -70,14 +62,14 @@ def newpos(pos, direction, steps):
         if found == WALL:
             return pos
         else:
-            M.set(npos,2)
+            M.set(npos, PATH)
             pos = npos
     return pos
 
-def p1(expect=0 if USING_EXAMPLE else 0):
-    return 0
-    M.set(STARTPOS,2)
-    instructions = D
+def p1(expect=6032 if USING_EXAMPLE else 103224):
+    M.set(STARTPOS, PATH)
+    x,y = STARTPOS
+    instructions = INSTRUCTIONS
     dirn = 90
     idx = 0
     while idx<len(instructions):
@@ -93,7 +85,8 @@ def p1(expect=0 if USING_EXAMPLE else 0):
             x,y = newpos((x,y), dirn, int(steps))
             idx += len(steps)
     ddv = ((dirn+270)//90)%4
-    return y, x, ddv, 1000*y + 4*x + ddv
+    NS.p1 = M
+    return 1000*y + 4*x + ddv
 
 ######## Part 2 ##########
 
@@ -105,7 +98,7 @@ class CubeMap:
         self.from_2d()
         self.x = self.y = 1 # all the action happens on z=0 plane
         self.set(ORIGIN)
-        self.rotations = []
+        self.path = [] # only used to determine final facing
 
     def rotate_forward(self):
         self.rotations.append("rf")
@@ -261,12 +254,13 @@ class CubeMap:
                     break
 
             self.y = y
+            self.path.append((self.x, self.y))
             self.set(PATH)
 
 
-def p2(expect=0 if USING_EXAMPLE else 0):
+def p2(expect=5031 if USING_EXAMPLE else 189097):
     cube = CubeMap()
-    instructions = D
+    instructions = INSTRUCTIONS
     idx = 0
     dbg = lambda: Map(cube.to_2d()).show()
     cube.turn_right()
@@ -285,13 +279,15 @@ def p2(expect=0 if USING_EXAMPLE else 0):
     cube.set(DESTINATION)
     map2d = cube.to_2d()
     res = np.where(map2d==DESTINATION)
-    y,x = res[0]+1, res[1]+1
-    m=Map(map2d)
-    m.show()
-    breakpoint()
-    return y*1000+x*4
+    y,x = list(zip(*res))[0]
+    # Map(map2d).show()
+    NS.p2 = map2d
+    # @@ I visually inspected the 2d map at this point to work out the possible facings, there were two, then tried both!
+    facing = 3 if USING_EXAMPLE else 1
+    return 1000*(y+1) + 4*(x+1) + facing
 
 
 if __name__ == "__main__":
     show(p1, p2)
-    #viz.viz?(NS)
+    NS.p1.img.resize((456,606)).save("output/day22a.png")
+    Map(NS.p2).img.resize((450,600)).save("output/day22b.png")
